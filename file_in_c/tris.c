@@ -11,4 +11,8 @@ int main(){
 
     menu();
     campo_da_gioco();
+
+    char let1 = 'O';
+    char let2 = 'X';
+    
 }
