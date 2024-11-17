@@ -2,33 +2,7 @@
 
 #define M 5
 
-void campo_da_gioco(char matrice[M][M]) {
-    // Qui ci sarà il campo di gioco che si aggiornerà ogni volta
-    printf("  TRIS\n");
-    for (int i = 0; i < M; i++) {
-        for (int j = 0; j < M; j++) {
-            printf("%c ", matrice[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-void menu() {
-    
-    int s;
-    
-    printf("Benvenuto al gioco del Tris!\n");
-    do{
-        printf("Inserisci 1 per iniziare : %d\n ", s);
-        scanf("%d", &s);
-    }while(s!=0);
-}
-
-int main() {
-    menu();
-
-    int cnt = 0;
-    char matrice[M][M];
+void crea(char matrice[M][M]){
 
     // Creazione della matrice
     for (int i = 0; i < M; i++) {
@@ -45,15 +19,44 @@ int main() {
             }
         }
     }
+}
+void stampa(char matrice[M][M]) {
 
-    // Mostra il campo di gioco
-    campo_da_gioco(matrice);
+    // Qui ci sarà il campo di gioco che si aggiornerà ogni volta
+    printf("  TRIS\n");
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < M; j++) {
+            printf("%c ", matrice[i][j]);
+        }
+        printf("\n");
+    }
+}
 
-    // Esempio di inserimento di un simbolo
-    matrice[0][0] = 'X'; // Giocatore 1
-    campo_da_gioco(matrice);
+void menu() {
+    
+    int s;
+    
+    printf("Benvenuto al gioco del Tris!\n");
+    do{
+        printf("Inserisci 1 per iniziare :  " );
+        scanf("%d", &s);
+    }while(s<=0 || s>=2);
 
-    // Qui puoi aggiungere il codice per gestire i turni dei giocatori
+    system('cls');
+}
+
+int main() {
+    
+    menu();
+
+    int cnt = 0;
+    char matrice[M][M];
+
+    crea(matrice);
+
+    stampa(matrice);
+
+    //core(matrice);
 
     return 0;
 }
