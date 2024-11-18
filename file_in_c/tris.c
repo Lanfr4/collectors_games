@@ -49,9 +49,9 @@ void stampa(char matrice[M][M]) {
     }
 }*/
 
-void gioco(char matrice[M][M],  int scelta){
+void gioco(char matrice[M][M],  int scelta, int cnt){
 
-    static int i, j;
+    static int i, j, cnt;
     int l=0, k=0;
     
     if(scelta == 1){
@@ -62,24 +62,38 @@ void gioco(char matrice[M][M],  int scelta){
             if(matrice[l][k] == ' '){
                 matrice[l][k] = 'X';
                 scelta = 2;
-                gioco(matrice, scelta);
+                cnt ++;
+                gioco(matrice, scelta, cnt);
             }
-                    else{
-                        
-                    }
+            else if(matrice[l][k] == 'X' || matrice[l][k] == 'O' ){
+                    printf("Errore");
+                    scelta =2;
+                    cnt ++;
+                    gioco(matrice, scelta, cnt);
             }
-        }
     }
     else{
-
-    }
-    
-    
-
+        printf("Giocatore dove vuoi mettere la tua pedina ??\n");
+        printf("Dimmi la coordinata delle righe   ovvero 0,2 oppure 4\n");
+        printf("Quelle delle colonne invece è la stessa, ovvero 0,2 e 4..\n");
+        scnaf("%d%d", &l, &k);
+            if(matrice[l][k] == ' '){
+                matrice[l][k] = 'O';
+                scelta = 1;
+                cnt ++;
+                gioco(matrice, scelta, cnt);
+            }
+            else if(matrice[l][k] == 'X' || matrice[l][k] == 'O' ){
+                    printf("Errore");
+                    scelta =1;
+                    cnt ++;
+                    gioco(matrice, scelta, cnt);
+            }   
+        }
 }
 int main() {
     
-    int s, luck;
+    int s, cnt, luck;
     char  g1, g2;
 
     srand(time(NULL)); // Seed the random number generator
@@ -103,7 +117,7 @@ int main() {
     stampa(matrice);
 
    
-    gioco(matrice, luck);
+    gioco(matrice,luck, cnt );
      /* 
     if(luck == 4){
         printf("Giocatore 2 hai vinto!!!");
@@ -112,7 +126,7 @@ int main() {
         printf("Giocatore 1 hai vinto!!!");
     }
     else{
-        printf("La partita è terminata in pareggio, spiaze :(");
+        printf("La partita è terminata in pareggio, spiaze :";
     }
     return 0;*/
 }
