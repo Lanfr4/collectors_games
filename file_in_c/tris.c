@@ -71,12 +71,14 @@ int  gioco(char matrice[M][M],  int scelta, int cnt){
                     matrice[l][k] = 'X';
                     scelta = 2;
                     cnt ++;
+                    stampa(matrice);
                     gioco(matrice, scelta, cnt);
                 }
                 else if(matrice[l][k] == 'X' || matrice[l][k] == 'O' ){
                         printf("Errore");
                         scelta =2;
                         cnt ++;
+                        stampa(matrice);
                         gioco(matrice, scelta, cnt);
                 }
         }
@@ -106,9 +108,9 @@ int main() {
     char  g1, g2;
     char matrice[M][M];
 
-    srand(time(NULL)); // Seed the random number generator
+    srand(time(NULL)); // Seme del numero casuale
 
-    luck = rand() % 2 + 1; // Generate a random number between 1 and 2
+    luck = rand() % 2 + 1; // Genera Numero casuale
 
     //menu();
 
