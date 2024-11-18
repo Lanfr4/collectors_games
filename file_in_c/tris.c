@@ -3,7 +3,7 @@
 #include <time.h>
 #define M 5
 
-void crea(char matrice[M][M]){
+void crea(char matrice[M][M]){ // Funzione cha crea la matrice iniziale
 
     // Creazione della matrice
     for (int i = 0; i < M; i++) {
@@ -21,7 +21,8 @@ void crea(char matrice[M][M]){
         }
     }
 }
-void stampa(char matrice[M][M]) {
+void stampa(char matrice[M][M]) { // Funzione che ogni volta stampera la mia matrice aggiornandola con le X o i O
+
 
     // Qui ci sarà il campo di gioco che si aggiornerà ogni volta
     printf("  TRIS\n");
@@ -32,110 +33,7 @@ void stampa(char matrice[M][M]) {
         printf("\n");
     }
 }
-/*void menu(){
-
-    int c=0;
-
-    printf("Benvenuto nella collectors_games!!!");
-    printf("Cosa vuoi fare?");
-    printf("Premi 1 per giocare o 0 per uscire...");
-    scanf("%d", &c);
-
-    if( c== 1){
-        main();
-    }
-    else{
-        abort();
-    }
-}*/
-
-int  gioco(char matrice[M][M],  int scelta, int cnt){
-
-    static int i, j, cnt;
-    int l=0, k=0;
-    
-    if(cnt == 5){
-        for(i=0; i<M; i++){
-            for(j=0; j<M ; j++){
-
-            }
-        }
-    }
-    else{
-        if(scelta == 1){
-            printf("Giocatore dove vuoi mettere la tua pedina ??\n");
-            printf("Dimmi la coordinata delle righe   ovvero 0,2 oppure 4\n");
-            printf("Quelle delle colonne invece è la stessa, ovvero 0,2 e 4..\n");
-            scnaf("%d%d", &l, &k);
-                if(matrice[l][k] == ' '){
-                    matrice[l][k] = 'X';
-                    scelta = 2;
-                    cnt ++;
-                    stampa(matrice);
-                    gioco(matrice, scelta, cnt);
-                }
-                else if(matrice[l][k] == 'X' || matrice[l][k] == 'O' ){
-                        printf("Errore");
-                        scelta =2;
-                        cnt ++;
-                        stampa(matrice);
-                        gioco(matrice, scelta, cnt);
-                }
-        }
-        else{
-            printf("Giocatore dove vuoi mettere la tua pedina ??\n");
-            printf("Dimmi la coordinata delle righe   ovvero 0,2 oppure 4\n");
-            printf("Quelle delle colonne invece è la stessa, ovvero 0,2 e 4..\n");
-            scnaf("%d%d", &l, &k);
-                if(matrice[l][k] == ' '){
-                    matrice[l][k] = 'O';
-                    scelta = 1;
-                    cnt ++;
-                    gioco(matrice, scelta, cnt);
-                }
-                else if(matrice[l][k] == 'X' || matrice[l][k] == 'O' ){
-                        printf("Errore");
-                        scelta =1;
-                        cnt ++;
-                        gioco(matrice, scelta, cnt);
-                }   
-            }
-    }
-}
+void gioco(); // Funzione che è alla base del mio gioco( posizionamento dei simboli, e richiamo alla funzione che ogni volta stampa la matrice)
+int checkWin(); // Funziona che visone le eventuali condizioni di vittoria
 int main() {
-    
-    int s, cnt, luck;
-    char  g1, g2;
-    char matrice[M][M];
-
-    srand(time(NULL)); // Seme del numero casuale
-
-    luck = rand() % 2 + 1; // Genera Numero casuale
-
-    //menu();
-
-    do{
-        printf("Inserisci 1 per iniziare :  " );
-        scanf("%d", &s);
-    }while(s<=0 || s>=2);
-
-    system("cls");
-
-    crea(matrice);
-
-    stampa(matrice);
-
-   
-    luck = gioco(matrice,luck, cnt );
-    
-    if(luck == 4){
-        printf("Giocatore 2 hai vinto!!!");
-    }
-    else if(luck == 3){
-        printf("Giocatore 1 hai vinto!!!");
-    }
-    else{
-        printf("La partita è terminata in pareggio, spiaze :");
-    }
-    return 0;
 }
