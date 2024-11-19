@@ -1,4 +1,4 @@
-# collectors_games
+collectors_games
 ----------------------------
 Creazione di viedogiochi con vari linguaggi di programmazione 
 
